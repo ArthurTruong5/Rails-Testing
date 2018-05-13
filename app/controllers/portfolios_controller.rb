@@ -1,5 +1,10 @@
 class PortfoliosController < ApplicationController
 
+
+  def show
+    @portfolio_item = Portfolio.find(params[:id])
+  end
+
   def index
     @portfolio_items = Portfolio.all # calling model, inside the controller and now this will be availiable to the view
   end
@@ -18,6 +23,22 @@ class PortfoliosController < ApplicationController
       end
     end
   end
+
+def edit
+  @portfolio_item = Portfolio.find(params[:id]) # rake routes, then find edit ID.
+end
+
+def update
+  @portfolio_item = Portfolio.find(params[:id])
+  respond_to do |format|
+    if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
+      format.html { redirect_to @portfolio_item, notice: 'This was successfully updated.' }
+    else
+      format.html { render :edit }
+    end
+  end
+end
+
 
 
 end
