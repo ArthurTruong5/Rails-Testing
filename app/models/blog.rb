@@ -4,4 +4,6 @@ class Blog < ApplicationRecord
   friendly_id :title, use: :slugged #check schema file and change the id to the unique set
 
   validates_presence_of :title, :body
+
+  belong_to :topic
 end
