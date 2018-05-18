@@ -6,7 +6,7 @@ class PortfoliosController < ApplicationController
   end
 
   def index
-    @portfolio_items = Portfolio.all # calling model, inside the controller and now this will be availiable to the view
+    @portfolio_items = Portfolio.angular
   end
 
   def new
